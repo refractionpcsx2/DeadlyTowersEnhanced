@@ -1,0 +1,224 @@
+$09 = Frame Counter
+$000A = (Temp?) Pressed buttons on Controller 1
+$000B = (Temp?) Pressed buttons on Controller 2
+$001E + $001F = Stored memory address used for jumps
+$0050 = Maybe some kind of state? Unsure.
+$0057 = Player Current Move Direction 0 = None, 1 = Right, 2 = Left, 3 = Up, 4 = Down, 5 = Up/Right, 6 = Up/Left, 7 = Down/Right, 8 = Down/Left
+$0099 = Health underflow
+$009A = Health
+$00BD + $00BC = Player X pixel move count
+$00BF + $00BE = Player Y pixel move count
+$0100 = Defaults to $F for $1B1 value
+$0101 = Defaults to $0 for $1B4 value (ANDed with $7, so only lower 3 bits valid?)
+$0102 = Defaults to $64 for $1B3 Max Health Value
+$0104 = Defaults to 1 if Attack Slot 2 contains Double Shot, Defaults to 2 if Attack Slot 2 contains Parallel Shot
+$0120 = Some kind of list FF terminated, seems to be related to enemy sprites on the level load
+
+$0170 = Defense Slot 1 - init to 1 (Nothing Helm)
+$0171 = Defense Slot 2 - init to 5 (Nothing Shield)
+$0172 = Defense Slot 3 - init to 9 (Nothing Armor)
+$0173 = Attack Slot 1 - init to D (Short Sword)
+$0174 = Attack Slot 2 - init to 0 (Empty Slot)
+$0175 = Attack Slot 3 - init to 0 (Empty Slot)
+$0176 = Inv Slot 1
+$0177 = Inv Slot 2
+$0178 = Inv Slot 3
+$0179 = Inv Slot 4
+$017A = Inv Slot 5
+$017B = Inv Slot 6
+
+$0189 = Controller 1 buttons being pressed
+
+$01B2 = Max health underflow default
+$01B3 = Max health
+$01B5 = Buff flags $10 = Figurine, $04 = Green Necklace, $02 = Magic Mace
+$01B7 = Weapon info: $04 = Double Shot, $08 = Parallel shot, mixed with: $0-3 Projectile Speed. $20 = Invulnerable (Blue Necklace)
+
+$0320 (maybe from $322) = Enemy X positions
+$0360 (maybe from $362) = Enemy Y positions
+$0380 (maybe from $382) = Seems to become 0 when that enemy slot is "Active", 1 when offscreen
+$04A0 = Player firing Projectile 1? (maybe $04A8 too)
+$04A2 = Projectile Direction 0 = Right, 1 = Left, 2 = Up, 3 = Down, 4 = Up/Right, 5 = Up/Left, 6 = Down/Right, 7 = Down/Left
+$04A4 = Projectile 1 pixels away from player
+$04A5 = Projectile 2 pixels away from player
+$04A6 = Player Last Move Direction 1 = Right, 2 = Left, 3 = Up, 4 = Down, 5 = Up/Right, 6 = Up/Left, 7 = Down/Right, 8 = Down/Left
+$04A9 = 0 = next projectile will be projectile 1, 1 = next projectile will be projectile 2 (See bugs)
+These two both get set when doing horizontal movement
+$04B4 = Player last move is vertically 0 = Not moving vertically, 1 = Up, 2 = Down
+$04BB = Player last move is horizontally 0 = Not moving horizontally, 1 = right, 2 = left
+$04DB = Timer for Blue Necklace armor effect, when it reaches $C0 it resets to zero and clears $20 in $1B7
+$04DE = Current knockback direction 1 = Left, 2 = Right, 3 = Down, 4 = Up, 5 = Down/Left, 6 = Down/Right, 7 = Up/Left, 8 = Up/Right
+$04FB = Timer for figurine, counts up to $F0 (240) then clears $10 from $1B5
+$0542 = Object 1 pickup type
+$0543 = Object 2 pickup type
+$0544 = Object 3 pickup type
+$0545 = Object 4 pickup type
+$0546 = Object 5 pickup type
+$0547 = Object 6 pickup type
+-- Through maybe $59F
+
+$0578 = Timer for Green Necklace when it reaches $80 it resets to zero and clears $04 on $1B5
+$0579 = Timer for Agate/Orange Necklace when it reaches $80 it resets to zero, clears $8 in $1B5
+
+//Sprite memory seems to start at $06E0, here's the important ones which don't seem to change
+$06E0 = UI Digit 1 Y Position
+$06E1 = UI Digit 1 Sprite
+$06E3 = UI Digit 1 X Position
+$06E4 = UI Digit 2 Y Position
+$06E5 = UI Digit 2 Sprite
+$06E7 = UI Digit 2 X Position
+$06E8 = UI Digit 3 Y Position
+$06E9 = UI Digit 3 Sprite
+$06EB = UI Digit 3 X Position
+$06EC = UI Slash Y Position
+$06ED = UI Slash Sprite
+$06EF = UI Slash X Position
+$06F0 = UI Digit 4 Y Position
+$06F1 = UI Digit 4 Sprite
+$06F3 = UI Digit 4 X Position
+$06F4 = UI Digit 5 Y Position
+$06F5 = UI Digit 5 Sprite
+$06F7 = UI Digit 5 X Position
+$06F8 = UI Digit 6 Y Position
+$06F9 = UI Digit 6 Sprite
+$06FB = UI Digit 6 X Position
+$0700 = Body Y Position
+$0701 = Body Sprite
+$0703 = Body X Position
+$0704 = Head Y Position
+$0705 = Head Sprite
+$0707 = Head X Position
+
+$0708 = Projectile 1 Y Position
+$0709 = Projectile 1 Sprite
+$070B = Projectile 1 X Position
+$070C = Projectile 2 Y Position
+$070D = Projectile 2 Sprite
+$070F = Projectile 2 X Position
+
+$0710 = Object 0 Y Position 
+$0711 = Object 0 Sprite
+$0713 = Object 0 X Position 
+$0714 = Object 1 Y Position 
+$0715 = Object 1 Sprite
+$0717 = Object 1 X Position 
+$0718 = Object 2 Y Position 
+$0719 = Object 2 Sprite
+$071B = Object 2 X Position 
+$071C = Object 3 Y Position 
+$071D = Object 3 Sprite
+$071F = Object 3 X Position 
+-- Through to $75F (maybe $77F)
+
+$07CD = seems to be the song position
+
+Pickup Types (Incomplete):
+0 - Not a pickup
+1 - Ludder
+3 - Heart
+5 - Large Ludder
+
+Item Values:
+0 - Empty Slot
+1 - Empty Helm
+2 - Chain Helmet
+3 - Iron Helmet
+4 - Hyper Helmet
+5 - Empty Shield
+6 - Shield
+7 - Lion Shield
+8 - Shield of Kings
+9 - Empty Armor
+A - Leather Armor
+B - Plate Armor
+C - Hyper Armor
+D - Short Sword
+E - Normal Sword
+F - Dragon Slayer
+10 - Splendor!
+11 - Magic Key
+12 - Evil Bell
+13 - Fire Magic
+14 - Hyper Boots
+15 - Figure
+16 - Gloves
+17 - Normal Gloves
+18 - Gauntlets
+19 - Double Shot
+1A - Parallel Shot
+1B - Blue Crystal
+1C - Green Crystal
+1D - Orange Crystal
+1E - Red Crystal
+1F - Blue Scroll
+20 - Green Scroll
+21 - Orange Scroll
+22 - Red Scroll
+23 - Blue Necklace
+24 - Green Necklace
+25 - Agate Necklace
+26 - Red Necklace
+27 - Blue Drink
+28 - Green Drink
+29 - Orange Drink
+2A - Red Drink
+2B - Magic Mace
+2C - Cup
+2D - Shield (Evil? It's grey)
+2E - Cup (Evil? It's grey)
+2F - Crash, guess that's it lol
+
+
+Things of note regarding knockback:
+$8E76 has a call to $8EBB which forces the knockback when you're in the "hit" state. But something else reverses your facing direction
+$9544 forces the projectile direction
+$9343 forces player to look in opposite direction (as if going backwards)
+
+To get rid of knockback, need to NOP the following:
+$8E76 was BNE $8EBB
+$9544 was BNE $957A
+$9343 was BNE $9352
+
+// This clears the I Frame Timer back to zero, which screws up the new room I Frames if enabled
+$D208 was   STA $A2 now NOP NOP (EA EA) same address in HXD + 10
+
+New Function for IFrame on entry applied to new room function (goes in to memory around $8130 replacing the first JSR of the function):
+
+A9 01   // LDA #$01
+85 A2   //  STA IFrameTimer
+20 B7 FE // JSR $FEB7
+60       // RTS
+
+
+Making the music not loop:
+
+// Checks is the new music is the same as the old one, if so doesn't tell the music to change.
+Block1: put at end of PRG
+CD FF 02  // CMP $2FF
+F0 03    // BEQ 3 Bytes
+8D E3 07  //STA $07E3  // Store new value if the song changed
+60       // RTS
+
+// Keeps track of the current music track in $2FF
+Block2: put at end of PRG
+BC E3 07 // LDY with $07E3
+18 	 // CLC
+C0 10    // CPY 10
+90 03    // If Less than 10 skip
+8C FF 02 // STY in $2FF
+A9 FF    // LDA $#FF
+9D E3 07  // STA in $07E3
+60  // RTS
+
+
+85AF was STA $07E3 replace this with other JSR call JSR Block1
+
+C9B0 was LDA #$FF replace this with JSR call to Block2
+
+
+Bugs in original code:
+- $04A9 says which projectile is going to be fired next (default to 0 for first), if you have double shot, if you're fast you can fire off a single shot and this gets flipped to 1, 
+      if you fire again while the first projectile is still on the screen, it behaves normally and resets to 0, but if you wait until projectile 1 is gone, the next shot will fire 2 projectiles
+- Agate/Orange Necklace is always active once activated due to a programming error where they don't clear the right bit or register once the effect finishes at $EF4D, it should clear $185 bit 0, not $1B5 bit 3
+  the manual doesn't say it's temporary, however, so the code is just a complicated mess to give you an invisible 1 hp damage reduction regardless of the fact it has a timer.
+	  
